@@ -3,7 +3,7 @@
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
-%define beta
+%define beta %nil
 
 %define major_private 1
 %define qtversion %{api}.%{qtminor}.%{qtsubminor}
@@ -14,27 +14,27 @@
 
 %define _qt5_prefix %{_libdir}/qt%{api}
 
-%define qttarballdir qtx11extras-opensource-src-%{qtversion}%{?beta:-%{beta}}
-
 Name:		qt5-qtx11extras
 Version:	5.5.0
 %if "%{beta}" != ""
 Release:	1.%{beta}.1
-Source0:	http://download.qt.io/development_releases/qt/%{api}.%{qtminor}/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
+%define qttarballdir qtx11extras-opensource-src-%{version}-%{beta}
+Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
 Release:	1
-Source0:	http://download.qt-project.org/official_releases/qt/%{api}.%{qtminor}/%{version}/submodules/%{qttarballdir}.tar.xz
+%define qttarballdir qtx11extras-opensource-src-%{version}
+Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
 Summary:	Qt GUI toolkit
 Group:		Development/KDE and Qt
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
-URL:		http://www.qt-project.org
+URL:		http://www.qt.io
 BuildRequires:	qt5-qtbase-devel >= %version
 BuildRequires:	pkgconfig(Qt5Gui) >= %version
 BuildRequires:	pkgconfig(Qt5Widgets) >= %version
 
 %description
-Provides specific APIs for X11
+Provides specific APIs for X11.
 
 #------------------------------------------------------------------------------
 
