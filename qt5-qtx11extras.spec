@@ -3,7 +3,7 @@
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
-%define beta %{nil}
+%define beta beta
 
 %define major_private 1
 %define qtversion %{api}.%{qtminor}.%{qtsubminor}
@@ -15,10 +15,10 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtx11extras
-Version:	5.9.2
+Version:	5.10.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
-%define qttarballdir qtx11extras-opensource-src-%{version}-%{beta}
+%define qttarballdir qtx11extras-everywhere-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
 Release:	1
