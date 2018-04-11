@@ -3,7 +3,7 @@
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
-%define beta %{nil}
+%define beta beta3
 
 %define major_private 1
 %define qtversion %{api}.%{qtminor}.%{qtsubminor}
@@ -15,7 +15,7 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtx11extras
-Version:	5.10.1
+Version:	5.11.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 %define qttarballdir qtx11extras-everywhere-src-%{version}-%{beta}
