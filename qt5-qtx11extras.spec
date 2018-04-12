@@ -32,6 +32,8 @@ URL:		http://www.qt.io
 BuildRequires:	qmake5 >= %version
 BuildRequires:	pkgconfig(Qt5Gui) >= %version
 BuildRequires:	pkgconfig(Qt5Widgets) >= %version
+# For the Provides: generator
+BuildRequires:	cmake >= 3.11.0-1
 
 %description
 Provides specific APIs for X11.
