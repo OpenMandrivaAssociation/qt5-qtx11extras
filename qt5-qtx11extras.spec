@@ -15,7 +15,7 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtx11extras
-Version:	5.11.1
+Version:	5.11.2
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 %define qttarballdir qtx11extras-everywhere-src-%{version}-%{beta}
