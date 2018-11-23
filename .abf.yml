@@ -1,4 +1,5 @@
 removed_sources:
   qtx11extras-opensource-src-5.9.2.tar.xz: 0902dba0e94ac7b1e4d05d56a5b411df99191ad6
-sources:
   qtx11extras-opensource-src-5.9.6.tar.xz: 056f70e006ac82322bdd31bb8208ff8a36f368a0
+sources:
+  qtx11extras-opensource-src-5.9.7.tar.xz: 38e9943c7744e5539c245557117f8732bd880e08
