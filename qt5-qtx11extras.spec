@@ -3,7 +3,7 @@
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
-%define beta beta1
+%define beta beta2
 
 %define major_private 1
 %define qtversion %{api}.%{qtminor}.%{qtsubminor}
