@@ -21,12 +21,12 @@ Release:	0.%{beta}.1
 %define qttarballdir qtx11extras-everywhere-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
-Release:	1
-%define qttarballdir qtx11extras-everywhere-src-5.15.2
-Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/5.15.2/submodules/%{qttarballdir}.tar.xz
+Release:	2
+%define qttarballdir qtx11extras-everywhere-opensource-src-%{version}
+Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
 # From KDE
-Patch1000:	0001-Bump-version.patch
+# [currently no patches required]
 Summary:	Qt GUI toolkit
 Group:		Development/KDE and Qt
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
@@ -75,7 +75,7 @@ Devel files needed to build apps based on QtX11Extras.
 #------------------------------------------------------------------------------
 
 %prep
-%autosetup -n %qttarballdir -p1
+%autosetup -n %(echo %qttarballdir|sed -e 's,-opensource,,') -p1
 %{_qt5_prefix}/bin/syncqt.pl -version %{version}
 
 %build
@@ -106,7 +106,3 @@ s@-L/usr/X11R6/%{_lib} @@g;\
 s@-I/usr/X11R6/include @@g;\
 s@-L/%{_builddir}\S+@@g'\
     `find . -name \*.pc`
-
-# .la and .a files, die, die, die.
-rm -f %{buildroot}%{_qt5_libdir}/lib*.la
-rm -f %{buildroot}%{_qt5_libdir}/lib*.a
